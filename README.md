@@ -1,4 +1,4 @@
-# blog_platform
+# BlogPlatform
 
 Это мой диплом.  
 Для запуска `bun start`
