@@ -1,7 +1,6 @@
 import express from "express";
 import type {Express, Request, Response} from "express";
 import router from "./router";
-import cors from "cors";
 //import { Pool } from "pg";
 
 const PORT = process.env.PORT || "3000";
@@ -14,7 +13,6 @@ const app: Express = express();
 });*/
 
 app.use("/api", router);
-app.use(cors());
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express works! ('v')");
