@@ -1,7 +1,10 @@
 import express from "express";
 import type {Express, Request, Response} from "express";
+import router from "./router";
+import cors from "cors";
 //import { Pool } from "pg";
 
+const PORT = process.env.PORT || "3000";
 const app: Express = express();
 /*const pool = new Pool({
   user: process.env.POSTGRES_USER || 'postgres',
@@ -9,7 +12,9 @@ const app: Express = express();
   password: process.env.POSTGRES_PASSWORD || '',
   database: process.env.POSTGRES_DATABASE_NAME,
 });*/
-const PORT = process.env.PORT || "3000";
+
+app.use("/api", router);
+app.use(cors());
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Express works! ('v')");
@@ -17,9 +22,17 @@ app.get("/", (req: Request, res: Response) => {
 //    .then(result => res.send(result));
 });
 
-app.listen(PORT, () => {
-  console.log(
-    `Server launch. Listen port ${PORT}\n` +
-    `http://localhost:${PORT}`
-  );
-});
+function main() {
+  try {
+    app.listen(PORT, () => {
+      console.log(
+        `Server launch. Listen port ${PORT}\n` +
+        `http://localhost:${PORT}`
+      );
+    });
+  } catch (e) {
+    console.log(`Error: ${e}`);
+  }
+}
+
+main();
