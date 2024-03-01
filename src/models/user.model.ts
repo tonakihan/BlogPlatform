@@ -2,6 +2,7 @@ import { Model, Table, Column, DataType } from "sequelize-typescript";
 
 @Table({ // TODO: Погуглить, что это
   tableName: 'users',
+  timestamps: false
 })
 class User extends Model {
   @Column({

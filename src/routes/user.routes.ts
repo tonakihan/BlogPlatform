@@ -12,8 +12,8 @@ class UserRouter {
     this.router.get('/', UserController.getAll);
     this.router.get('/:id', UserController.getOne);
     this.router.post('', UserController.create);
-    this.router.put(':id', UserController.update);
-    this.router.delete(':id', UserController.remove);
+    this.router.put('', UserController.update);
+    this.router.delete('/:id', UserController.remove);
   }
 }
 

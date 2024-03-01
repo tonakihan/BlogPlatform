@@ -1,7 +1,8 @@
 import { Model, Table, Column, DataType } from "sequelize-typescript";
 
 @Table({
-  tableName: "subscribe"
+  tableName: "subscribe",
+  timestamps: false
 })
 class Subscribe extends Model {
   @Column({

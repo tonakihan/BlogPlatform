@@ -1,7 +1,8 @@
 import { Model, Table, Column, DataType } from "sequelize-typescript"; 
 
 @Table({
-  tableName: "post_comments"
+  tableName: "post_comments",
+  timestamps: false
 })
 class Comments extends Model {
   @Column({

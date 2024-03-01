@@ -1,11 +1,21 @@
 import type {Response, Request} from "express"
+import User from "../models/user.model";
+import userRepository from "../repositories/user.repository";
 
 class UserController {
   async create(req: Request, res: Response) {
+    if (!req.body.firstName) {
+      res.status(400).json({
+        message: "Content can not be empty!"
+      });
+      return;
+    }
     try {
+      let user: User = req.body;
+      let savedUser = await userRepository.save(user);
+
       res.status(201).json({
-        message: "create OK",
-        reqBody: req.body
+        message: "create OK"
       });
     } catch (err) {
       res.status(500).json({
@@ -15,19 +25,78 @@ class UserController {
   }
 
   async remove(req: Request, res: Response) {
-    res.send("Remove user");
+    let id: number = parseInt(req.params.id, 10);
+
+    try {
+      let resultCode = await userRepository.delete(id);
+
+      if (resultCode == 1) {
+        res.status(200).send({
+          message: "User was deleted successfully!"
+        });
+      } else {
+        res.status(400).send({
+          message: `Cannot delete User with id=${id}. Maybe User was not found!`,
+        });
+      }
+    } catch (err) {
+      res.status(500).send({
+        message: `Could not delete Tutorial with id=${id}.`
+      });
+    }
   }
 
   async update(req: Request, res: Response) {
-    res.send("Update user");
+    let user: User = req.body;
+
+    try {
+      let resultCode = await userRepository.update(user);
+      
+      if (resultCode == 1) {
+        res.status(200).send({
+          message: "User was updated successfully."
+        });
+      } else {
+        res.status(400).send({
+          message: `Cannot update User with id=${user.id}. Maybe User was not found or req.body is empty!`
+        });
+      } 
+    } catch (err) {
+      res.status(500).send({
+        message: `Error updating User with id=${user.id}.`
+      });
+    }
   }
 
   async getOne(req: Request, res: Response) {
-    res.send("Get one user");
+    //TODO: Мб обработать ошибку
+    let id: number = parseInt(req.params.id, 10);
+
+    try {
+      let user: User|null = await userRepository.retrieveById(id);
+
+      if (user)
+        res.status(200).send(user);
+      else 
+        res.status(400).send({
+          message: `Cannot find Tutorial with id=${id}.`
+        });
+    } catch (err) {
+      res.status(400).send({
+        message: `Not found user by ${id}`
+      });
+    }
   }
   
   async getAll(req: Request, res: Response) {
-    res.send("Get all user");
+    try {
+      let users: User[] = await userRepository.retrieveAll();
+      res.status(200).send(users);
+    } catch (err) {
+      res.status(500).json({
+        message: "Error"
+      })
+    }
   }
 }
 

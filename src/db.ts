@@ -1,9 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
 import { config, dialect } from "./config/db.config";
-import User from './models/user.model';
-import Post from './models/post.model';
-import Subscribe from './models/subscribe.model';
-import Comments from './models/comment.model';
 
 class Database {
   public sequelize: Sequelize | undefined;
@@ -25,9 +21,9 @@ class Database {
         acquire: config.pool.acquire,
         idle: config.pool.idle
       },
-      models: [User, Post, Subscribe, Comments]
+      models: [__dirname + '/models']
     });
-    
+
     await this.sequelize
       .authenticate()
       .then(() => {
