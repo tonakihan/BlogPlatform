@@ -7,13 +7,14 @@ git clone https://github.com/tonakihan/BlogPlatform
 cd BlogPlatform
 git checkout backend
 sudo -u postgres psql blog_platform < ./data/Source/db.sql
-bun install
+npm install
 echo "DB_NAME=blog_platform" > .env
 echo "DB_PASSWORD=Should_be_your_password_from_postgres" > .env
 ```
 ```bash
-bun start
+npm run start
 ```
+Также был доступен bun, но от не отказался, т.к. есть баг с sequelize-typescript
 
 ---
 /data/db.sql - это простой пример базы данных с которой будет работа. (будет позже)
@@ -72,4 +73,4 @@ bun start
   - [ ] Настроить авторизацию
 
 ## Bugs
-- [ ] Ошибка, когда отправляю get:/api/user с json'ом.
+- [ ] Ошибка, когда отправляю get:/api/user с json'ом. (возможно особенность postman)

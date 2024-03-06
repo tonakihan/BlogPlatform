@@ -1,24 +1,24 @@
 /**
- * Отвечает за обработку запросов и выдачу результата: user
+ * Отвечает за обработку запросов и выдачу результата: post
  */
 import type {Response, Request} from "express"
-import User from "../models/user.model";
-import userRepository from "../repositories/user.repository";
+import Post from "../models/post.model";
+import postRepository from "../repositories/post.repository";
 
-class UserController {
+class PostController {
   async create(req: Request, res: Response) {
     //TODO: Запилить нормально на уровне express-v...
-    if (!req.body.firstName) {
+    if (!req.body.text) {
       res.status(400).json({
         message: "Content can not be empty!"
       });
       return;
     }
     try {
-      let user: User = req.body;
-      let savedUser = await userRepository.save(user);
+      let post: Post = req.body;
+      let savedPost = await postRepository.save(post);
 
-      res.status(201).json(savedUser);
+      res.status(201).json(savedPost);
     } catch (err) {
       res.status(500).json({
         message: "Internal Server Error!"
@@ -30,15 +30,15 @@ class UserController {
     let id: number = parseInt(req.params.id, 10);
 
     try {
-      let resultCode = await userRepository.delete(id);
+      let resultCode = await postRepository.delete(id);
 
       if (resultCode == 1) {
         res.status(200).send({
-          message: "User was deleted successfully!"
+          message: "Post was deleted successfully!"
         });
       } else {
         res.status(400).send({
-          message: `Cannot delete User with id=${id}. Maybe User was not found!`,
+          message: `Cannot delete Post with id=${id}. Maybe Post was not found!`,
         });
       }
     } catch (err) {
@@ -49,51 +49,50 @@ class UserController {
   }
 
   async update(req: Request, res: Response) {
-    let user: User = req.body;
+    let post: Post = req.body;
 
     try {
-      let resultCode = await userRepository.update(user);
+      let resultCode = await postRepository.update(post);
       
       if (resultCode == 1) {
         res.status(200).send({
-          message: "User was updated successfully."
+          message: "Post was updated successfully."
         });
       } else {
         res.status(400).send({
-          message: `Cannot update User with id=${user.id}. Maybe User was not found or req.body is empty!`
+          message: `Cannot update Post with id=${post.id}. Maybe Post was not found or req.body is empty!`
         });
       } 
     } catch (err) {
       res.status(500).send({
-        message: `Error updating User with id=${user.id}.`
+        message: `Error updating Post with id=${post.id}.`
       });
     }
   }
 
   async getOne(req: Request, res: Response) {
-    //TODO: Мб обработать ошибку
     let id: number = parseInt(req.params.id, 10);
 
     try {
-      let user: User|null = await userRepository.retrieveById(id);
+      let post: Post|null = await postRepository.retrieveById(id);
 
-      if (user)
-        res.status(200).send(user);
+      if (post)
+        res.status(200).send(post);
       else 
         res.status(400).send({
-          message: `Cannot find User with id=${id}.`
+          message: `Cannot find Post with id=${id}.`
         });
     } catch (err) {
       res.status(400).send({
-        message: `Not found user by ${id}`
+        message: `Not found Post by ${id}`
       });
     }
   }
   
   async getAll(req: Request, res: Response) {
     try {
-      let users: User[] = await userRepository.retrieveAll();
-      res.status(200).send(users);
+      let posts: Post[] = await postRepository.retrieveAll();
+      res.status(200).send(posts);
     } catch (err) {
       res.status(500).json({
         message: "Error"
@@ -102,4 +101,4 @@ class UserController {
   }
 }
 
-export default new UserController();
+export default new PostController();

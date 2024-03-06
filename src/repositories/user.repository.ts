@@ -1,3 +1,13 @@
+/**
+ * Отвечает за операции с базой данных: users
+ * Поля user:
+ *   id?
+ *   nickname
+ *   firstName
+ *   lastName
+ *   email
+ *   role
+ */
 import User from "../models/user.model";
 
 interface IUserRepository {
@@ -10,6 +20,9 @@ interface IUserRepository {
 
 class UserRepository implements IUserRepository {
   async save(user: User): Promise<User> {
+  /**
+   * Создаст нового user в БД
+   */
     try {
       return await User.create({
         firstName: user.firstName,
@@ -24,6 +37,9 @@ class UserRepository implements IUserRepository {
   }
 
   async retrieveAll(): Promise<User[]> {
+    /**
+     * Вернет всех users
+     */
     //TODO: Добавить поиск по запросу (совпадение поиск и результат)
     try {
       return await User.findAll();
@@ -33,6 +49,9 @@ class UserRepository implements IUserRepository {
   }
 
   async retrieveById(userId: number): Promise<User | null> {
+  /**
+   * Вернет одного user по его id
+   */
     try {
       return await User.findByPk(userId);
     } catch (err) {
@@ -41,6 +60,11 @@ class UserRepository implements IUserRepository {
   }
 
   async update(user: User): Promise<number> {
+  /**
+   * Получает user и обновляет запись в БД.
+   * Обязательно нужно поле id.
+   * При успехе возвращает 1
+   */
     let { id, ...data } = user;
 
     try {
@@ -55,6 +79,10 @@ class UserRepository implements IUserRepository {
   }
 
   async delete(userId: number): Promise<number> {
+  /**
+   * Удаляет пользователя по его id
+   * При успехе возвращает 1
+   */
     try {
       let affectedRows = User.destroy(
         { where: { id: userId } }

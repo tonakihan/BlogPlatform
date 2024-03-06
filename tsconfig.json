@@ -24,5 +24,6 @@
     
     /* Other */
     "sourceMap": true,
+    "strictPropertyInitialization": false // Помогло связать таблицы бд на node - на bun все по прежнему
   }
 }

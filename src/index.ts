@@ -1,6 +1,7 @@
 import express, { Application } from "express";
 import Routes from "./routes";
 import Database from "./db";
+import { config } from "dotenv";
 //import cors, { CorsOptions } from "cors"; //TODO: Фундаменд под cors
 
 export default class Server {
@@ -11,7 +12,8 @@ export default class Server {
   }
 
   private config(app: Application): void {
-/*    const corsOptions: CorsOptions = {
+    config();
+    /*  const corsOptions: CorsOptions = {
       origin: "http://localhost:3000" // Если будет использоваться, то изменить порт
     };
 

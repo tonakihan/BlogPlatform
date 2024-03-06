@@ -1,14 +1,16 @@
-import { Model, Table, Column, DataType } from "sequelize-typescript";
+import { Model, Table, Column, DataType, HasMany, PrimaryKey } from "sequelize-typescript";
+import Post from "./post.model";
 
 @Table({ // TODO: Погуглить, что это
   tableName: 'users',
   timestamps: false
 })
 class User extends Model {
+  @PrimaryKey
   @Column({
     type: DataType.INTEGER,
     autoIncrement: true,
-    primaryKey: true,
+    //primaryKey: true,
     field: "id"
   })
   id?: number;
@@ -42,6 +44,9 @@ class User extends Model {
     field: "role"
   })
   role!: string;
+
+  @HasMany(() => Post) 
+  posts: Post[];
 }
 
 export default User;
