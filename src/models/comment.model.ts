@@ -1,24 +1,23 @@
-import { Model, Table, Column, DataType } from "sequelize-typescript"; 
+import { Model, Table, Column, DataType, PrimaryKey, ForeignKey } from "sequelize-typescript"; 
+import User from "./user.model";
+import Post from "./post.model";
 
 @Table({
   tableName: "post_comments",
   timestamps: false
 })
 class Comments extends Model {
+  @PrimaryKey
   @Column({
     type: DataType.INTEGER,
     autoIncrement: true,
-    primaryKey: true,
     field: "id"
   })
   id?: number;
 
+  @ForeignKey(() => User)
   @Column({
     type: DataType.INTEGER,
-    references: {
-      model: "users",
-      key: "id"
-    },
     allowNull: true,
     field: "author_user_id"
   })
@@ -30,12 +29,9 @@ class Comments extends Model {
   })
   text!: string;
 
+  @ForeignKey(() => Post)
   @Column({
     type: DataType.INTEGER,
-    references: {
-      model: "posts",
-      key: "id"
-    },
     allowNull: true,
     field: "post_id"
   })

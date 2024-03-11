@@ -1,7 +1,7 @@
 import { Model, Table, Column, DataType, HasMany, PrimaryKey } from "sequelize-typescript";
 import Post from "./post.model";
 
-@Table({ // TODO: Погуглить, что это
+@Table({
   tableName: 'users',
   timestamps: false
 })
@@ -10,7 +10,6 @@ class User extends Model {
   @Column({
     type: DataType.INTEGER,
     autoIncrement: true,
-    //primaryKey: true,
     field: "id"
   })
   id?: number;

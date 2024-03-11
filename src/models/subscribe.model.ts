@@ -1,37 +1,38 @@
-import { Model, Table, Column, DataType } from "sequelize-typescript";
+import { Model, Table, Column, DataType, BelongsTo, ForeignKey, PrimaryKey } from "sequelize-typescript";
+import User from "./user.model";
 
 @Table({
   tableName: "subscribe",
   timestamps: false
 })
 class Subscribe extends Model {
+  @PrimaryKey
   @Column({
     type: DataType.INTEGER,
     autoIncrement: true,
-    primaryKey: true,
     field: "id"
   })
   id?: number;
 
+  @ForeignKey(() => User)
   @Column({
     type: DataType.INTEGER,
-    references: {
-       model: "users",
-      key: "id"
-    },
     field: "user_target_id"
   })
   userTargetId!: number;
 
+  @ForeignKey(() => User)
   @Column({
     type: DataType.INTEGER,
-    references: {
-       model: "users",
-      key: "id"
-    },
     field: "user_object_id"
   })
-  userObjectId!: number
+  userObjectId!: number;
+
+  @BelongsTo(() => User, "userTargetId")
+  userTarget: User;
+
+  @BelongsTo(() => User, "userObjectId")
+  userObject: User;
 }
 
 export default Subscribe

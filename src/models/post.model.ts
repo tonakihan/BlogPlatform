@@ -1,6 +1,6 @@
 // TODO: Добавить поле createdAt
 
-import { Model, Table, Column, DataType, ForeignKey, BelongsTo } from "sequelize-typescript";
+import { Model, Table, Column, DataType, ForeignKey, BelongsTo, PrimaryKey } from "sequelize-typescript";
 import User from "./user.model";
 
 @Table({
@@ -8,10 +8,10 @@ import User from "./user.model";
   timestamps: false
 })
 class Post extends Model {
+  @PrimaryKey
   @Column({
     type: DataType.INTEGER,
     autoIncrement: true,
-    primaryKey: true,
     field: "id"
   })
   id?: number;

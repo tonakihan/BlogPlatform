@@ -83,6 +83,7 @@ class UserRepository implements IUserRepository {
    * Удаляет пользователя по его id
    * При успехе возвращает 1
    */
+  // TODO: добавить удаление подписок
     try {
       let affectedRows = User.destroy(
         { where: { id: userId } }
