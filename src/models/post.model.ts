@@ -1,7 +1,8 @@
 // TODO: Добавить поле createdAt
 
-import { Model, Table, Column, DataType, ForeignKey, BelongsTo, PrimaryKey } from "sequelize-typescript";
+import { Model, Table, Column, DataType, ForeignKey, BelongsTo, PrimaryKey, HasMany } from "sequelize-typescript";
 import User from "./user.model";
+import Comment from "./comment.model";
 
 @Table({
   tableName: "posts",
@@ -19,14 +20,10 @@ class Post extends Model {
   @ForeignKey(() => User)
   @Column({
     type: DataType.INTEGER,
-    /*references: {
-      model: "users",
-      key: "id"
-    },*/
     allowNull: true,
     field: "author_user_id"
   })
-  authorUserId!: number;
+  authorId!: number;
 
   @Column({
     type: DataType.STRING(10),
@@ -56,6 +53,9 @@ class Post extends Model {
 
   @BelongsTo(() => User)
   author: User;
+
+  @HasMany(() => Comment)
+  comments: Comment[];
 }
 
 export default Post;

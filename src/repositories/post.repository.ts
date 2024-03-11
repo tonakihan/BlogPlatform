@@ -2,7 +2,7 @@
  * Отвечает за операции с базой данных: posts
  * Поля post:
  *   id?
- *   authorUserId
+ *   authorId
  *   status
  *   filePath?
  *   likes?

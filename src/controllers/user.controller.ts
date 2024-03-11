@@ -70,7 +70,7 @@ class UserController {
     }
   }
 
-  async getOne(req: Request, res: Response) {
+  async get(req: Request, res: Response) {
     //TODO: Мб обработать ошибку
     let id: number = parseInt(req.params.id, 10);
 

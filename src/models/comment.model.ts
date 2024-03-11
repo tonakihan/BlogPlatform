@@ -1,4 +1,4 @@
-import { Model, Table, Column, DataType, PrimaryKey, ForeignKey } from "sequelize-typescript"; 
+import { Model, Table, Column, DataType, PrimaryKey, ForeignKey, BelongsTo } from "sequelize-typescript"; 
 import User from "./user.model";
 import Post from "./post.model";
 
@@ -6,7 +6,7 @@ import Post from "./post.model";
   tableName: "post_comments",
   timestamps: false
 })
-class Comments extends Model {
+class Comment extends Model {
   @PrimaryKey
   @Column({
     type: DataType.INTEGER,
@@ -21,7 +21,7 @@ class Comments extends Model {
     allowNull: true,
     field: "author_user_id"
   })
-  authorUserId!: number;
+  authorId!: number;
 
   @Column({
     type: DataType.TEXT,
@@ -43,6 +43,12 @@ class Comments extends Model {
     field: "likes"
   })
   likes?: string;
+
+  @BelongsTo(() => User)
+  author: User;
+
+  @BelongsTo(() => Post)
+  post: Post;
 }
 
-export default Comments;
+export default Comment;

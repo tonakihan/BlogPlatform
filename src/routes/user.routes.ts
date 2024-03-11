@@ -10,7 +10,7 @@ class UserRouter {
 
   intializeRoutes() {
     this.router.get('/', UserController.getAll);
-    this.router.get('/:id', UserController.getOne);
+    this.router.get('/:id', UserController.get);
     this.router.post('', UserController.create);
     this.router.put('', UserController.update);
     this.router.delete('/:id', UserController.remove);

@@ -70,7 +70,7 @@ class PostController {
     }
   }
 
-  async getOne(req: Request, res: Response) {
+  async get(req: Request, res: Response) {
     let id: number = parseInt(req.params.id, 10);
 
     try {

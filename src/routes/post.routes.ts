@@ -10,7 +10,7 @@ class PostRouter {
 
   intializeRoutes() {
     this.router.get('/', PostController.getAll);
-    this.router.get('/:id', PostController.getOne);
+    this.router.get('/:id', PostController.get);
     this.router.post('', PostController.create);
     this.router.put('', PostController.update);
     this.router.delete('/:id', PostController.remove);
