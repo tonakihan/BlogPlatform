@@ -4,7 +4,6 @@ import postRouter from "./post.routes";
 import subscribeRoutes from "./subscribe.routes";
 import commentRoutes from "./comment.routes";
 
-//TODO: Добавить проверку полей запроса сюды
 class Routes {
   constructor(app: Application) {
     app.use("/api/user", userRouter);

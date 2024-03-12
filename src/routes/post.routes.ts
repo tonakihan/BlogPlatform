@@ -1,5 +1,6 @@
 import { Router } from "express";
-import PostController from "../controllers/post.controller"
+import PostController from "../controllers/post.controller";
+import { validateIdParams } from "../validations/common.validations";
 
 class PostRouter {
   router = Router();
@@ -10,10 +11,10 @@ class PostRouter {
 
   intializeRoutes() {
     this.router.get('/', PostController.getAll);
-    this.router.get('/:id', PostController.get);
+    this.router.get('/:id', validateIdParams, PostController.get);
     this.router.post('', PostController.create);
     this.router.put('', PostController.update);
-    this.router.delete('/:id', PostController.remove);
+    this.router.delete('/:id', validateIdParams, PostController.remove);
   }
 }
 

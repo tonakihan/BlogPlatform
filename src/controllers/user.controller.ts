@@ -1,19 +1,12 @@
 /**
  * Отвечает за обработку запросов и выдачу результата: user
  */
-import type {Response, Request} from "express"
+import type { Response, Request } from "express"
 import User from "../models/user.model";
 import userRepository from "../repositories/user.repository";
 
 class UserController {
   async create(req: Request, res: Response) {
-    //TODO: Запилить нормально на уровне express-v...
-    if (!req.body.firstName) {
-      res.status(400).json({
-        message: "Content can not be empty!"
-      });
-      return;
-    }
     try {
       let user: User = req.body;
       let savedUser = await userRepository.save(user);
@@ -32,15 +25,14 @@ class UserController {
     try {
       let resultCode = await userRepository.delete(id);
 
-      if (resultCode == 1) {
+      if (resultCode == 1) 
         res.status(200).send({
           message: "User was deleted successfully!"
         });
-      } else {
+      else
         res.status(400).send({
           message: `Cannot delete User with id=${id}. Maybe User was not found!`,
         });
-      }
     } catch (err) {
       res.status(500).send({
         message: `Could not delete Post with id=${id}.`
@@ -51,18 +43,25 @@ class UserController {
   async update(req: Request, res: Response) {
     let user: User = req.body;
 
+    // Обрабатываю возможную ошибку 
+    if (!user.id) {
+      res.status(400).send({
+          message: "Not fount id in body"
+      });
+      return;
+    }
+
     try {
       let resultCode = await userRepository.update(user);
       
-      if (resultCode == 1) {
+      if (resultCode == 1)
         res.status(200).send({
           message: "User was updated successfully."
         });
-      } else {
+      else 
         res.status(400).send({
           message: `Cannot update User with id=${user.id}. Maybe User was not found or req.body is empty!`
         });
-      } 
     } catch (err) {
       res.status(500).send({
         message: `Error updating User with id=${user.id}.`
@@ -71,7 +70,6 @@ class UserController {
   }
 
   async get(req: Request, res: Response) {
-    //TODO: Мб обработать ошибку
     let id: number = parseInt(req.params.id, 10);
 
     try {

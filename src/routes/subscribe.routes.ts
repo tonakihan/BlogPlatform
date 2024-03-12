@@ -1,5 +1,6 @@
 import { Router } from "express";
 import SubscribeController from "../controllers/subscribe.controller";
+import { validateIdParams } from "../validations/common.validations";
 
 class SubscribeRouter {
   router = Router();
@@ -10,10 +11,10 @@ class SubscribeRouter {
 
   intializeRoutes() {
     this.router.post('', SubscribeController.create);
-    this.router.delete('/:id', SubscribeController.remove);
-    this.router.get('/:id', SubscribeController.get);
-    this.router.get('/count/subscribers/:id', SubscribeController.getCountSubscribers);
-    this.router.get('/count/subscriptions/:id', SubscribeController.getCountSubscriptions);
+    this.router.delete('/:id', validateIdParams, SubscribeController.remove);
+    this.router.get('/:id', validateIdParams, SubscribeController.get);
+    this.router.get('/count/subscribers/:id', validateIdParams, SubscribeController.getCountSubscribers);
+    this.router.get('/count/subscriptions/:id', validateIdParams, SubscribeController.getCountSubscriptions);
     // Для отладки!
     //this.router.get('', SubscribeController.getAll);
   }

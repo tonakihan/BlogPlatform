@@ -24,6 +24,10 @@ npm run start
 - [ ] Backend
   - [ ] Сделать API
     - [ ] Добавить express-validator и проверять поля
+      - [x] user
+      - [ ] post
+      - [ ] comment
+      - [ ] subscribe
     - [x] user
       - [x] DEL - Удаление 
       - [x] POST - Добавление
