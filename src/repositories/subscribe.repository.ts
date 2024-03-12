@@ -1,3 +1,10 @@
+/**
+ * Отвечает за операции с базой данных: subscribe
+ * Поля post:
+ *   id?
+ *   userTargetId
+ *   userObjectId
+ */
 import Subscribe from "../models/subscribe.model";
 import User from "../models/user.model";
 

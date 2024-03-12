@@ -4,16 +4,10 @@ import {Response, Request} from "express";
 
 class SubscribeController {
   async create(req: Request, res: Response) {
-    if(!req.body.userObjectId) {
-      res.status(400).send({
-        message: "Content can not be empty!"
-      });
-      return;
-    }
-    try {
-      let subscribe: Subscribe = req.body;
-      let savedSubscribe = await subscribeRepository.save(subscribe);
+    let subscribe: Subscribe = req.body;
 
+    try {
+      let savedSubscribe = await subscribeRepository.save(subscribe);
       res.status(201).send(savedSubscribe);
     } catch (err) {
       res.status(500).send({
@@ -23,19 +17,19 @@ class SubscribeController {
   }
 
   async remove(req: Request, res: Response) {
+    let userId: number = parseInt(req.params.id, 10); 
+
     try {
-      let userId: number = parseInt(req.params.id, 10);
       let resultCode = await subscribeRepository.delete(userId);
 
-      if (resultCode == 1) {
+      if (resultCode == 1) 
         res.status(200).send({
           message: "was deleted successfully!"
         });
-      } else {
+      else 
         res.status(400).send({
-          message: "Cannot delete User with id=${id}. Maybe User was not found!"
+          message: `Cannot delete User with id=${userId}. Maybe User was not found!`
         });
-      }
     } catch (err) {
       res.status(500).send({
         message: "Internal Server Error!"
@@ -44,10 +38,10 @@ class SubscribeController {
   }
 
   async get(req: Request, res: Response) {
+    let userId: number = parseInt(req.params.id ,10);
+
     try {
-      let userId: number = parseInt(req.params.id ,10);
       let subscribers = await subscribeRepository.retrieve(userId);
-      
       res.status(200).send(subscribers);
     } catch (err) {
       res.status(500).send({
@@ -57,10 +51,10 @@ class SubscribeController {
   }
 
   async getCountSubscribers(req: Request, res: Response) {
-    try {
-      let userId: number = parseInt(req.params.id, 10);
-      let count = await subscribeRepository.retrieveCountSubscribers(userId);
+    let userId: number = parseInt(req.params.id, 10);
 
+    try { 
+      let count = await subscribeRepository.retrieveCountSubscribers(userId);
       res.status(200).send({count});
     } catch (err) {
       res.status(500).send({
@@ -70,10 +64,10 @@ class SubscribeController {
   }
 
   async getCountSubscriptions(req: Request, res: Response) {
-    try {
-      let userId: number = parseInt(req.params.id, 10);
-      let count = await subscribeRepository.retrieveCountSubscriptions(userId);
+    let userId: number = parseInt(req.params.id, 10);
 
+    try {
+      let count = await subscribeRepository.retrieveCountSubscriptions(userId);
       res.status(200).send({count});
     } catch (err) {
       res.status(500).send({
@@ -85,7 +79,6 @@ class SubscribeController {
   async getAll(req: Request, res: Response) {
     try {
       let subscribers = await subscribeRepository.retriveAll();
-
       res.status(200).send(subscribers);
     } catch (err) {
       res.status(500).send({

@@ -1,0 +1,29 @@
+import { body } from "express-validator";
+import { idValidate } from ".";
+
+const commentDataValidate = [
+  ...idValidate,
+  
+  body('authorId')
+    .exists().withMessage("authorId is required")
+    .isInt().withMessage("authorId should be number"),
+  
+  body('userObjectId')
+    .exists().withMessage("userObjectId is required")
+    .isInt().withMessage("userObjectId should be number"),
+
+  body('text')
+    .exists().withMessage("text is required")
+    .isString().withMessage("text should be string")
+    .not().isInt().withMessage("text should be string"),
+
+  body('postId'),
+
+  body('likes')
+    .optional()
+    .isInt().withMessage("likes should be number")
+];
+
+export {
+  commentDataValidate
+};

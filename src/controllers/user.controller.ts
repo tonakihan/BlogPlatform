@@ -7,10 +7,11 @@ import userRepository from "../repositories/user.repository";
 
 class UserController {
   async create(req: Request, res: Response) {
-    try {
-      let user: User = req.body;
-      let savedUser = await userRepository.save(user);
+    //TODO: сделать поиск пользователя и вернуть нормальную ошибку
+    let user: User = req.body;
 
+    try {  
+      let savedUser = await userRepository.save(user);
       res.status(201).json(savedUser);
     } catch (err) {
       res.status(500).json({

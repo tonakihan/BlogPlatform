@@ -24,6 +24,7 @@ const postDataValidate = [
    body('text')
     .exists().withMessage("text is required")
     .isString().withMessage("text should be string")
+    .not().isInt().withMessage("text should be string")
 ];
 
 export {

@@ -1,5 +1,5 @@
-import {config as dotconf} from "dotenv";
-dotconf(); // Костыль - для node
+import {config as configEnv} from "dotenv";
+configEnv(); // Костыль - для node
 
 export const config = {
   host: process.env.POSTGRES_HOST ? process.env.POSTGRES_HOST.toString() : 'localhost',

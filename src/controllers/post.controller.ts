@@ -25,15 +25,14 @@ class PostController {
     try {
       let resultCode = await postRepository.delete(id);
 
-      if (resultCode == 1) {
+      if (resultCode == 1) 
         res.status(200).send({
           message: "Post was deleted successfully!"
         });
-      } else {
+      else 
         res.status(400).send({
           message: `Cannot delete Post with id=${id}. Maybe Post was not found!`,
         });
-      }
     } catch (err) {
       res.status(500).send({
         message: `Could not delete Post with id=${id}.`

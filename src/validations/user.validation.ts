@@ -7,16 +7,19 @@ const userDataValidate = [
   body('firstName')
     .exists().withMessage("firstName is reqired")
     .isString().withMessage("firstName should be string")
+    .not().isInt().withMessage("firstName should be string")
     .isLength({max: 45}).withMessage("length should be not more 45"),
 
   body('lastName')
     .exists().withMessage("lastName is reqired")
     .isString().withMessage("lastName should be string")
+    .not().isInt().withMessage("lastName should be string")
     .isLength({max: 100}).withMessage("length should be not more 100"),
 
   body('nickname')
     .exists().withMessage("nickname is reqired")
     .isString().withMessage("nickname should be string")
+    .not().isInt().withMessage("nickname should be string")
     .isLength({max: 45}).withMessage("length should be not more 45"),
   
   body('email')

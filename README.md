@@ -22,13 +22,13 @@ npm run start
 
 ## Task list
 - [ ] Backend
-  - [ ] Сделать API
-    - [ ] Добавить express-validator и проверять поля
+  - [x] Сделать API
+    - [x] Добавить express-validator и проверять поля
       - [x] user
-      - [ ] переделать все под общий вид (выбрать один метод)
+      - [x] переделать все под общий вид (выбрать один метод)
       - [x] post
-      - [ ] comment
-      - [ ] subscribe
+      - [x] comment
+      - [x] subscribe
     - [x] user
       - [x] DEL - Удаление 
       - [x] POST - Добавление
