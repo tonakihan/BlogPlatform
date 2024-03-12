@@ -1,43 +1,34 @@
-import { Request, Response, NextFunction } from "express";
-import { validateId } from "./common.validations";
+import { idValidate } from ".";
+import { body } from "express-validator";
 
-function userDataValidate (req: Request, res: Response, next: NextFunction) {
-  let error: string[] = [];
-  
-  // Поле id не обязательно в некоторых случаях
-  if (req.body.id) 
-    validateId(req.body.id)
-      .forEach((eachError) => error.push(eachError));
+const userDataValidate = [
+  ...idValidate,
 
-  if (!req.body.firstName)
-    error.push('firstName is reqired');
+  body('firstName')
+    .exists().withMessage("firstName is reqired")
+    .isString().withMessage("firstName should be string")
+    .isLength({max: 45}).withMessage("length should be not more 45"),
+
+  body('lastName')
+    .exists().withMessage("lastName is reqired")
+    .isString().withMessage("lastName should be string")
+    .isLength({max: 100}).withMessage("length should be not more 100"),
+
+  body('nickname')
+    .exists().withMessage("nickname is reqired")
+    .isString().withMessage("nickname should be string")
+    .isLength({max: 45}).withMessage("length should be not more 45"),
   
-  if (!req.body.lastName) 
-    error.push('lastName is required');
+  body('email')
+    .exists().withMessage("email is reqired")
+    .isEmail().withMessage("provide valid email")
+    .isLength({max: 200}).withMessage("length should be not more 200"),
   
-  if (!req.body.nickname)
-    error.push('nickname is required');
-  
-  if (!req.body.email)
-    error.push('email is required');
-  else if (!req.body.email.match(
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/  
-  ))
-    error.push('provide valid email');
-  
-  // Отправляем ошибки
-  if (error.length > 0) {
-    console.log(`Result userDataValidate (errors): ${error}`);
-    res.status(400).send({
-      success: false,
-      error
-    });
-    return;
-  }
-  
-  console.log(`Result userDataValidate exit without errors`);
-  next();
-}
+  body('role')
+    .optional()
+    .isIn(["user", "admin", "bunned"]).withMessage("not correct role")
+    .isLength({max: 100}).withMessage("length should be not more 100")
+];
 
 export {
   userDataValidate

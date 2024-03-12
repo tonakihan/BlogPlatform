@@ -1,6 +1,6 @@
 import { Router } from "express";
 import UserController from "../controllers/user.controller"
-import { validateIdParams } from "../validations/common.validations";
+import { idValidate, applyValidator } from "../validations";
 import { userDataValidate } from "../validations/user.validation";
 
 class UserRouter {
@@ -12,10 +12,10 @@ class UserRouter {
 
   intializeRoutes() {
     this.router.get('/', UserController.getAll);
-    this.router.get('/:id', validateIdParams, UserController.get);
-    this.router.post('', userDataValidate, UserController.create);
-    this.router.put('', userDataValidate, UserController.update);
-    this.router.delete('/:id', validateIdParams, UserController.remove);
+    this.router.get('/:id', idValidate, applyValidator, UserController.get);
+    this.router.post('', userDataValidate, applyValidator, UserController.create);
+    this.router.put('', userDataValidate, applyValidator, UserController.update);
+    this.router.delete('/:id', idValidate, applyValidator, UserController.remove);
   }
 }
 
