@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from "express";
+import { validationResult } from "express-validator";
 
 function validateIdParams (req: Request, res: Response, next: NextFunction) {
   let id: string = req.params.id;
@@ -30,7 +31,18 @@ function validateId (id: string): string[] {
   return error;
 }
 
+// middleware for chain method. Example: post.router.ts
+async function middlewareChain(req: Request, res: Response, next: NextFunction) {
+  let result = validationResult(req);
+  if (!result.isEmpty()) {
+    res.send({ errors: result.array() });
+    return;
+  }
+  next();
+}
+
 export { 
+  middlewareChain,
   validateIdParams, 
   validateId 
 };

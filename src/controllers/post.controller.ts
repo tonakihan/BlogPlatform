@@ -7,13 +7,6 @@ import postRepository from "../repositories/post.repository";
 
 class PostController {
   async create(req: Request, res: Response) {
-    //TODO: Запилить нормально на уровне express-v...
-    if (!req.body.text) {
-      res.status(400).json({
-        message: "Content can not be empty!"
-      });
-      return;
-    }
     try {
       let post: Post = req.body;
       let savedPost = await postRepository.save(post);
@@ -50,6 +43,14 @@ class PostController {
 
   async update(req: Request, res: Response) {
     let post: Post = req.body;
+
+    // Обрабатываю возможную ошибку
+    if (!post.id) {
+      res.status(400).send({
+        message: "Not fount id in body"
+      });
+      return;
+    }
 
     try {
       let resultCode = await postRepository.update(post);

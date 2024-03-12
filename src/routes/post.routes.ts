@@ -1,6 +1,7 @@
 import { Router } from "express";
 import PostController from "../controllers/post.controller";
-import { validateIdParams } from "../validations/common.validations";
+import { middlewareChain, validateIdParams } from "../validations/common.validations";
+import { postDataValidate } from "../validations/post.validations";
 
 class PostRouter {
   router = Router();
@@ -12,8 +13,8 @@ class PostRouter {
   intializeRoutes() {
     this.router.get('/', PostController.getAll);
     this.router.get('/:id', validateIdParams, PostController.get);
-    this.router.post('', PostController.create);
-    this.router.put('', PostController.update);
+    this.router.post('', postDataValidate, middlewareChain, PostController.create);
+    this.router.put('', postDataValidate, middlewareChain, PostController.update);
     this.router.delete('/:id', validateIdParams, PostController.remove);
   }
 }

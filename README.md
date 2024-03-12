@@ -25,7 +25,8 @@ npm run start
   - [ ] Сделать API
     - [ ] Добавить express-validator и проверять поля
       - [x] user
-      - [ ] post
+      - [ ] переделать все под общий вид (выбрать один метод)
+      - [x] post
       - [ ] comment
       - [ ] subscribe
     - [x] user
