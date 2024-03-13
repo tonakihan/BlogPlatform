@@ -1,4 +1,4 @@
-<style>
+<!--<style>
   .none {
     color: gray;
   }
@@ -29,10 +29,9 @@
   .no {
     color: #17e9d3;
   }
-</style>
+</style>-->
 
 <h1> API </h1>
-<p>id? - знак '?' означает, что не обязательно указывать это поле / можно опустить в запросе </p>
 
 <h2> JSON data</h2>
 <table align="center">
