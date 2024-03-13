@@ -56,7 +56,7 @@ class CommentController {
       
       if (resultCode == 1) 
         res.status(200).send({
-          message: "Comment was updated successfully."
+          message: "Comment was updated successfully!"
         });
       else 
         res.status(400).send({

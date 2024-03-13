@@ -57,7 +57,7 @@ class UserController {
       
       if (resultCode == 1)
         res.status(200).send({
-          message: "User was updated successfully."
+          message: "User was updated successfully!"
         });
       else 
         res.status(400).send({

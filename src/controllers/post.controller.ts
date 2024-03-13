@@ -56,7 +56,7 @@ class PostController {
       
       if (resultCode == 1) {
         res.status(200).send({
-          message: "Post was updated successfully."
+          message: "Post was updated successfully!"
         });
       } else {
         res.status(400).send({

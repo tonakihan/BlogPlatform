@@ -17,18 +17,18 @@ class SubscribeController {
   }
 
   async remove(req: Request, res: Response) {
-    let userId: number = parseInt(req.params.id, 10); 
+    let id: number = parseInt(req.params.id, 10); 
 
     try {
-      let resultCode = await subscribeRepository.delete(userId);
+      let resultCode = await subscribeRepository.delete(id);
 
       if (resultCode == 1) 
         res.status(200).send({
-          message: "was deleted successfully!"
+          message: "Subscribe was deleted successfully!"
         });
       else 
         res.status(400).send({
-          message: `Cannot delete User with id=${userId}. Maybe User was not found!`
+          message: `Cannot delete Subscribe with id=${id}. Maybe Subscribe was not found!`
         });
     } catch (err) {
       res.status(500).send({
