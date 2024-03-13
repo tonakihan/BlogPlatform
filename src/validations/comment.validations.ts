@@ -17,7 +17,9 @@ const commentDataValidate = [
     .isString().withMessage("text should be string")
     .not().isInt().withMessage("text should be string"),
 
-  body('postId'),
+  body('postId')
+    .exists().withMessage("post is required")
+    .isInt().withMessage("postId should be number"),
 
   body('likes')
     .optional()
