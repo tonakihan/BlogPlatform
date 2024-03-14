@@ -47,7 +47,7 @@
     <th> required <br> (send) </th>
     <th> Type </th>
     <th> Null <br> value (get) </th>
-    <th> Role for data </th>
+    <th> Rules for data </th>
   </thead>
   <tbody>
     <tr>
