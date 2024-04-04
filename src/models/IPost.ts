@@ -1,7 +1,7 @@
-export type Post = {
-  id?: number,
+export interface IPost {
+  id: number,
   authorId: number,
   status: string,
-  likes?: number,
+  likes: number,
   text: string,
 };

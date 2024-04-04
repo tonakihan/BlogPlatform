@@ -1,5 +1,5 @@
-export type Subscribe = {
-  id?: number,
+export interface ISubscribe {
+  id: number,
   userTargetId: number,
   userObjectId: number
 };
