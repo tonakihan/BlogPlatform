@@ -16,8 +16,8 @@ npm run start
 ## Task list
 - [ ] Frontend
   - [ ] Страницы
-    - [ ] users
-    - [ ] posts
+    - [ ] userList
+    - [x] postList
     - [ ] postItem
     - [ ] userItem
   - [ ] Поиск
@@ -26,19 +26,14 @@ npm run start
     - [ ] По названию поста
     - [ ] По имени пользователя
   - [ ] Настройка redux
-    - [ ] Store
+    - [ ] Slices
       - [ ] Users
-      - [ ] Posts
-      - [ ] Subscribe
-      - [ ] Comments
-    - [ ] Reducers
-      - [ ] Users
-      - [ ] Posts
+      - [x] Posts
       - [ ] Subscribe
       - [ ] Comments
     - [ ] Получение данных с сервера
       - [ ] Users
-      - [ ] Posts
+      - [x] Posts
       - [ ] Subscribers
       - [ ] Comments
     - [ ] Отправление данных на сервер
@@ -46,5 +41,5 @@ npm run start
       - [ ] Post
       - [ ] Subscribe
       - [ ] Comment
-  - [ ] Настройка react Router
-  
+  - [ ] Настройка Router
+  - [ ] Добавить стили - sacc
