@@ -1,15 +1,21 @@
 import { Request, Response, NextFunction } from "express";
-import { body, validationResult } from "express-validator";
+import { body, param, validationResult } from "express-validator";
 
 const idValidate = [
+  param('id')
+    .optional() // Поля id может не быть
+    .isInt().withMessage("id should be number")
+    .custom(id => checkIdIsNotNegative(id)),
   body('id')
     .optional() // Поля id может не быть
     .isInt().withMessage("id should be number")
-    .custom(async (id) => {
-      if (id <= 0) 
-        throw new Error('id should be more then 0');
-    }),
+    .custom(id => checkIdIsNotNegative(id)),
 ];
+
+async function checkIdIsNotNegative(id: number) {
+  if (id <= 0) 
+    throw new Error('id should be more then 0');
+}
 
 // middleware for chain method.
 async function applyValidator(req: Request, res: Response, next: NextFunction) {
