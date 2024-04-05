@@ -11,7 +11,7 @@ app
     console.log();
     console.log(
       `Server is running on port ${PORT}.\n` +
-      `Link: https://localhost:${PORT}`
+      `Link: https://localhost:${PORT} \n`
     );
   })
   .on("error", (err: any) => {
