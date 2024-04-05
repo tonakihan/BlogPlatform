@@ -10,7 +10,7 @@ function PostList () {
   
   useEffect(() => {
     dispatch(fetchPosts());
-  });
+  }, [dispatch]);
 
   if (isLoading) {
     return <h1> Loading </h1>
