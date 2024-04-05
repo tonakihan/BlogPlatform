@@ -1,4 +1,4 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import type { IPost } from "../../models/IPost";
 import { fetchPosts } from "../thunk/postThunk";
 

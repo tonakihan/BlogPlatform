@@ -1,0 +1,1 @@
+export const URL_API_DOMAIN = process.env.REACT_APP_URL_API_DOMAIN ?? '';
