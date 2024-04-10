@@ -6,6 +6,8 @@
   border-color: lightblue;
   border-width: 10px;
   border-style: inset;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .postListElement {
