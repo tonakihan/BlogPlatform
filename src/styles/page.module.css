@@ -1,0 +1,24 @@
+.postMainElement {
+  margin-top: 15px;
+  padding: 20px;
+  width: 800px;
+  border-radius: 30px;
+  border-color: lightblue;
+  border-width: 10px;
+  border-style: inset;
+}
+
+.postListElement {
+  width: 800px;
+  max-height: 100px;
+}
+
+.buttonAddPost {
+  border-color: #2ee90d;
+  background-color: #2ee90d;
+  color: white;
+  position: fixed;
+  right: 10px;
+  bottom: 20px;
+  transform: translate(-50%, -50%);
+}
