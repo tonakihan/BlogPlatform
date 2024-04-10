@@ -4,14 +4,11 @@
 
 ## Запуск
 ```bash
-bun install
-bun start
-```
-или
-```bash
 npm install
-npm run start
+npm run build
+cp build/* ./public # копирование в папку public на backend
 ```
+После запустите backend
 
 ## Task list
 - [ ] Frontend
@@ -19,6 +16,7 @@ npm run start
     - [ ] userList
     - [x] postList
     - [ ] postItem
+      - [ ] Сделать комменты
     - [ ] userItem
   - [ ] Поиск
     - [ ] Сортировка
@@ -42,4 +40,11 @@ npm run start
       - [ ] Subscribe
       - [ ] Comment
   - [ ] Настройка Router
-  - [ ] Добавить стили - sacc
+  - [ ] Стили
+    - [ ] Добавить полосу ограничивающая визуально контент
+  - [ ] создать NavBar
+    - [ ] стили
+    - [ ] навигация по страницам
+    - [ ] авторизация
+    - [ ] строка поиска
+  - [x] поддржка css module для typescript
