@@ -1,4 +1,4 @@
-import { URL_API_DOMAIN } from ".";
+import { URL_API_DOMAIN } from "../config";
 import type { IPost } from "../models/IPost";
 import axios from "axios";
 

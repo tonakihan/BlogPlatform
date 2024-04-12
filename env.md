@@ -2,8 +2,5 @@
 
 | variable | назначение | by default |
 |---|---|---|
-| `POSTGRES_USER` | Пользователь postgres | `postgres`| 
-| `POSTGRES_HOST` | Host postgres | `localhost` |
-| `POSTGRES_PASSWORD` | Пароль для пользователя postgres | (no) |
-| `POSTGRES_DATABASE_NAME` | Название базы данных, к которой подключается postgres | (no) |
-| `PORT` | Порт на котором запускается сервер | `3000` |
+| `PORT` | Порт на котором запускается сервер. В случае frontend это порт для WSL | `3000` |
+| `REACT_APP_URL_API_DOMAIN` | URL адресс где находиться backend. Используется для отладки на одной машине. Пример: `http://localhost:8080` | (no) |

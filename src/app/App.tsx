@@ -1,10 +1,19 @@
-import React from "react";
-import PostList from "../pages/PostList";
+import type { FC } from "react";
+import { BrowserRouter } from "react-router-dom";
+import Router from "../components/Router";
+//import Footer from "../components/Footer";
+import Header from "../components/Header";
 
-function App() {
+const App: FC = () => {
   return (
-    <div className="app">
-      <PostList/>
+    <div id="app">
+      <BrowserRouter>
+        <Header/>
+        <main>
+          <Router/>
+        </main>
+        {/*<Footer/>*/}
+      </BrowserRouter>
     </div>
   )
 }

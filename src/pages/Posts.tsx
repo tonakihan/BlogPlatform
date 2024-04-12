@@ -1,14 +1,12 @@
 import { useEffect, type FC } from "react";
+import { fetchPosts } from "../store/thunk/postThunk";
 import { useAppDispatch } from "../hooks/redux/useAppDispatch";
 import { useAppSelector } from "../hooks/redux/useAppSelector";
-import { fetchPosts } from "../store/thunk/postThunk";
-import PostItem from "./PostItem";
-import cl from "../styles/page.module.css"
-import type { IPost } from "../models/IPost";
 import MyButton from "../components/UI/button/MyButton";
+import PostList from "../components/PostList";
+import cl from "../styles/post.module.css"
 
-
-const PostList: FC = () => {
+const Posts: FC = () => {
   const { posts, isLoading, error } = useAppSelector( state => state.posts );
   const dispatch = useAppDispatch();
   
@@ -22,6 +20,7 @@ const PostList: FC = () => {
         <h1> Loading </h1>
       </div>
 
+  // TODO: вынести в отдельную страницу
   if (error)
     return (
       <div className="error">
@@ -30,12 +29,6 @@ const PostList: FC = () => {
         <p>Попробуй перезагрузить сайт</p>
       </div>
     );
-
-  const selectPost = (post: IPost) => {
-    //TODO:Link to PostItem
-    alert("Select post. Not implemented");
-    console.log(post);
-  }
 
   const createPost = () => {
     //TODO: createPost
@@ -47,13 +40,9 @@ const PostList: FC = () => {
       <MyButton className={cl.buttonAddPost} onClick={() => createPost()}>
         Создай свой post!
       </MyButton>
-      {posts.map(post => (
-        <div onClick={() => selectPost(post)} key={post.id} >
-          <PostItem post={post} className={cl.postListElement}/>
-        </div>
-      ))}
+      <PostList posts={posts}/>
     </div>
   );
 }
 
-export default PostList;
+export default Posts;

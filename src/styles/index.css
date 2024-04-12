@@ -11,8 +11,9 @@
 #root {
   display: flex;
   flex-direction: column;
+  /*justify-content: center;*/
   align-items: center;
-  min-width: 1000px;
+  min-width: 1200px;
 }
 
 .absolute-center,

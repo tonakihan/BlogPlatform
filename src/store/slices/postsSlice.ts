@@ -14,6 +14,7 @@ const initialState: PostState =  {
   error: null,
 };
 
+//TODO: добавить thunk на получение одного поста byID
 const postSlice = createSlice ({
   name: "posts",
   initialState,
@@ -38,8 +39,7 @@ const postSlice = createSlice ({
         //Fail load data
         state.isLoading = false;
         state.error = action.payload as string;
-      })
-
+      });
   },
 });
 

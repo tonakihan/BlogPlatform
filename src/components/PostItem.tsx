@@ -1,10 +1,10 @@
 import type { FC } from "react";
 import type { IPost } from "../models/IPost"
-import cl from "../styles/page.module.css";
+import cl from "../styles/post.module.css";
+import type { IHtmlElement } from "../types/IHtmlElement";
 
-interface PostItemProps {
+interface PostItemProps extends IHtmlElement {
   post: IPost;
-  className?: string;
 }
 
 const PostItem: FC<PostItemProps> = ({ post, className }) => {
@@ -13,7 +13,7 @@ const PostItem: FC<PostItemProps> = ({ post, className }) => {
 
   return (
     <div className={style.join(' ')}>
-      {post.id}. {post.text}
+      {post.text}
     </div>
   )
 };

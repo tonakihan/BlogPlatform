@@ -1,0 +1,25 @@
+.header {
+  width: 1000px;
+  background-color: aqua;
+  border-radius: 30px;
+  margin: 20px auto;
+  padding: 10px 50px;
+  display: flex;
+  justify-content: space-between;
+  color: #3b3b3b;
+}
+
+.navBarTop {
+  display: inline-flex;
+  justify-content: start;
+}
+
+.navBarTop * {
+  text-decoration: none;
+  font-weight: bold;
+  color: inherit;
+  margin-right: 15px;
+}
+
+.auth {
+}
