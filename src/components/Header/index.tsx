@@ -9,10 +9,12 @@ const Header: FC<IHtmlElement> = ({ className }) => {
 
   return (
     <header className={style.join(' ')}>
-      <NavBar className={cl.navBarTop}/>
-      <div className={cl.auth}>
-        {/*TODO: авторизация*/}
-        <p>Auth</p>
+      <div id="topBar" className={cl.barTop}>
+        <NavBar className={cl.navBarTop}/>
+        <div className={cl.auth}>
+          {/*TODO: авторизация*/}
+          <p>Auth</p>
+        </div>
       </div>
     </header>
   );
