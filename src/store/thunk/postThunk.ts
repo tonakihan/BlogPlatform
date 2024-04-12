@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getPosts } from "../../api/getPosts";
+import { getPosts } from "../../api/posts";
 import type { IPost } from "../../models/IPost";
 
 //createAsyncThunk<Returned, ThunkArg, ThunkApiConfig>()

@@ -5,6 +5,8 @@ import { useAppSelector } from "../hooks/redux/useAppSelector";
 import MyButton from "../components/UI/button/MyButton";
 import PostList from "../components/PostList";
 import cl from "../styles/post.module.css"
+import Error from "../components/Error";
+import Loading from "../components/Loading";
 
 const Posts: FC = () => {
   const { posts, isLoading, error } = useAppSelector( state => state.posts );
@@ -15,20 +17,10 @@ const Posts: FC = () => {
   }, [dispatch]);
 
   if (isLoading) 
-    return 
-      <div className="absolute-center">
-        <h1> Loading </h1>
-      </div>
+    return (<Loading/>);
 
-  // TODO: вынести в отдельную страницу
   if (error)
-    return (
-      <div className="error">
-        <h1> Error </h1>
-        <p>{error}</p>
-        <p>Попробуй перезагрузить сайт</p>
-      </div>
-    );
+    return (<Error message={error}/>);
 
   const createPost = () => {
     //TODO: createPost
