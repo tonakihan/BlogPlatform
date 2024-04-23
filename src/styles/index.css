@@ -26,3 +26,9 @@
 .error h1{
   color: red; 
 }
+
+main {
+  width: 1000px;
+  max-width: 1000px;
+  margin: 0 auto;
+}

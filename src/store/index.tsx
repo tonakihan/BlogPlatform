@@ -1,10 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import postsReducer from "./slices/postsSlice";
+import commentsAPI from "../services/commentsAPI";
 
 export const store = configureStore({
   reducer: {
     posts: postsReducer,
-  }
+    [commentsAPI.reducerPath]: commentsAPI.reducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(commentsAPI.middleware),
 });
 
 

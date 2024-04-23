@@ -13,11 +13,12 @@ cp build/* ./public # копирование в папку public на backend
 ## Task list
 - [ ] Frontend
   - [ ] Страницы
-    - [ ] Users
+    - [x] About
+    - [ ] Search
     - [ ] UserById
     - [x] Posts
-    - [ ] PostById
-      - [ ] Сделать комменты
+    - [x] PostById
+      - [x] Сделать комменты
     - [ ] Auth
   - [ ] Поиск
     - [ ] Сортировка
@@ -25,16 +26,16 @@ cp build/* ./public # копирование в папку public на backend
     - [ ] По названию поста
     - [ ] По имени пользователя
   - [ ] Настройка redux
-    - [ ] Slices
+    - [ ] Slices/Reducers
       - [ ] Users
       - [x] Posts
       - [ ] Subscribe
-      - [ ] Comments
+      - [x] Comments
     - [ ] Получение данных с сервера
       - [ ] Users
       - [x] Posts
       - [ ] Subscribers
-      - [ ] Comments
+      - [x] Comments
     - [ ] Отправление данных на сервер
       - [ ] User
       - [ ] Post
@@ -47,10 +48,11 @@ cp build/* ./public # копирование в папку public на backend
     - [x] Стили
     - [x] Навигация по страницам
     - [ ] Авторизация
-    - [ ] Строка поиска
   - [x] Поддржка css module для typescript
   - [ ] Footer открепить от окна, и прикрепить к низу страницы
 
 
   ## TODO
   - [ ] Сделать на redux запрос одного пользователя/поста.
+  - [ ] Заменить стили на один огромный файл (конфликт стилей)
+  - [x] Настроить стили content (ограничить ширину)

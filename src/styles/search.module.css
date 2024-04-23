@@ -1,0 +1,13 @@
+.input {
+  width: 970px;
+  margin-top: 10px;
+}
+
+.setTarget {
+  border: none;
+  margin: 0 40px;
+  & label {
+    margin-right: 10px;
+    margin-left: 4px;
+  }
+}
