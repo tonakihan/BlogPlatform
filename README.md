@@ -16,9 +16,11 @@ cp build/* ./public # копирование в папку public на backend
     - [x] About
     - [ ] Search
     - [ ] UserById
-    - [x] Posts
-    - [x] PostById
+    - [ ] Posts
+      - [ ] Создание своего поста
+    - [ ] PostById
       - [x] Сделать комменты
+      - [ ] Создания своего коммента
     - [ ] Auth
   - [ ] Поиск
     - [ ] Сортировка
@@ -41,9 +43,7 @@ cp build/* ./public # копирование в папку public на backend
       - [ ] Post
       - [ ] Subscribe
       - [ ] Comment
-  - [ ] Настройка Router
-  - [ ] Стили
-    - [ ] Добавить полосу ограничивающая визуально контент
+  - [x] Настройка Router
   - [ ] Создать NavBar
     - [x] Стили
     - [x] Навигация по страницам
