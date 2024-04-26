@@ -51,7 +51,7 @@
   </thead>
   <tbody>
     <tr>
-      <th rowspan="6" class="vertical"> user </th>
+      <th rowspan="7" class="vertical"> user </th>
       <td class="json data"> id </td>
       <td class="no"> no </td>
       <td class="json type"> number </td>
@@ -92,6 +92,13 @@
       <td class="json type"> string </td>
       <td>  </td>
        <td> Length not more them 100 </td>
+    </tr>
+    <tr>
+      <td class="json data"> password </td>
+      <td class="yes"> yes </td>
+      <td class="json type"> string </td>
+      <td class="yes"> yes </td>
+       <td> Length not more them 200 </td>
     </tr>
     <div></div>
     <tr>

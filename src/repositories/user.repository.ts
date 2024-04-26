@@ -6,7 +6,8 @@
  *   firstName
  *   lastName
  *   email
- *   role
+ *   role?
+ *   password
  */
 import User from "../models/user.model";
 
@@ -29,7 +30,8 @@ class UserRepository implements IUserRepository {
         lastName: user.lastName,
         nickname: user.nickname,
         email: user.email,
-        role: user.role
+        role: user.role,
+        password: user.password
       });
     } catch (err) {
       throw new Error("Failed to create User!");

@@ -44,6 +44,12 @@ class User extends Model {
   })
   role!: string;
 
+  @Column({
+    type: DataType.STRING(200),
+    field: "password"
+  })
+  password!: string;
+
   @HasMany(() => Post) 
   posts: Post[];
 }

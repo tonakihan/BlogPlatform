@@ -30,7 +30,12 @@ const userDataValidate = [
   body('role')
     .optional()
     .isIn(["user", "admin", "bunned"]).withMessage("not correct role")
-    .isLength({max: 100}).withMessage("length should be not more 100")
+    .isLength({max: 100}).withMessage("length should be not more 100"),
+
+  body('password')
+    .exists().withMessage("password is reqired")
+    .isString().withMessage("password should be string")
+    .isLength({max: 200}).withMessage("length should be not more 200"),
 ];
 
 export {
