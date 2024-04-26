@@ -9,7 +9,7 @@ import { logout } from "../../store/slices/authSlice";
 
 interface IAuthProps extends IHtmlElement {};
 
-const Auth: FC<IAuthProps> = ({ className }) => {
+const AuthInfo: FC<IAuthProps> = ({ className }) => {
   const { isAuth, userInfo } = useAppSelector( state => state.auth );
   const dispath = useAppDispatch();
 
@@ -30,4 +30,4 @@ const Auth: FC<IAuthProps> = ({ className }) => {
   );
 };
 
-export default Auth;
+export default AuthInfo;

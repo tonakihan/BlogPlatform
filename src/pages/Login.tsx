@@ -10,6 +10,7 @@ import { useAppSelector } from "../hooks/redux/useAppSelector";
 import Loading from "../components/Loading";
 import Error from "../components/Error";
 import type { IAuth } from "../types/IAuth";
+import { useCheckIsAuth } from "../hooks/useCheckIsAuth";
 
 const Login: FC = () => {
   const navigate = useNavigate();
@@ -21,12 +22,7 @@ const Login: FC = () => {
     if (isAuth) navigate('/posts');
   }, [isAuth, navigate]);
 
-  //  Если был авторизован, подтягиваем из кэша
-  if (localStorage.getItem('isAuth') && isAuth === false) {
-    const login = localStorage.getItem('login') as string;
-    const password = localStorage.getItem('password') as string;
-    dispatch(authentication({ login, password }));
-  };
+  useCheckIsAuth();
 
   const handleSubmit = ( event: SyntheticEvent<HTMLFormElement> ) => {
     event.preventDefault();

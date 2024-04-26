@@ -21,6 +21,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout(state) {
+      localStorage.removeItem('isAuth');
       return initialState;
     },
   },

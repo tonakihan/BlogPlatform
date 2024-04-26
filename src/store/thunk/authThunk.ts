@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import type { IUser } from "../../models/IUser";
 import type { IAuth } from "../../types/IAuth";
-import usersAPI from "../../services/usersAPI";
+import { getUsers } from "../../api/users";
 
 //createAsyncThunk<Returned, ThunkArg, ThunkApiConfig>()
 export const authentication = createAsyncThunk<
@@ -34,12 +34,7 @@ export const authentication = createAsyncThunk<
         role: "user",
         password: "123",
       }] as IUser[];*/
-      const {data: users, error} = await usersAPI.useGetUsersQuery();
-
-      if (error) {
-        console.log(error);
-        return thunkApi.rejectWithValue("Ошибка запроса");
-      }
+      const {data: users} = await getUsers(); 
 
       //Проверка и возврат результата
       const user = users.find(user => user.nickname === login && user.password === password);
