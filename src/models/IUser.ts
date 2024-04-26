@@ -4,5 +4,6 @@ export interface IUser {
   lastName: string,
   nickname: string,
   email: string,
-  role: string
+  role: string,
+  password: string,
 };

@@ -1,0 +1,15 @@
+.loginMain * {
+  margin-top: 5px;
+}
+
+.loginMain button {
+  margin-left: 450px;
+}
+
+.loginMain input {
+  width: 500px;
+  margin-left: 235px;
+}
+.loginMain a {
+  margin-left: 435px;
+}

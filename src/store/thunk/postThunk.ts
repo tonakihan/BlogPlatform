@@ -3,7 +3,11 @@ import { getPosts } from "../../api/posts";
 import type { IPost } from "../../models/IPost";
 
 //createAsyncThunk<Returned, ThunkArg, ThunkApiConfig>()
-export const fetchPosts = createAsyncThunk<IPost[], void, { rejectValue: string }>(
+export const fetchPosts = createAsyncThunk<
+  IPost[], 
+  void, 
+  { rejectValue: string }
+>(
   'posts/fetchPosts', //ID thunk for dev tools
   async (_, {rejectWithValue}) => { // Using thunkAPI
     try {

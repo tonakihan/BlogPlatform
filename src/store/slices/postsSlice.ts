@@ -15,7 +15,7 @@ const initialState: PostState =  {
 };
 
 //TODO: добавить thunk на получение одного поста byID
-const postSlice = createSlice ({
+const postSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {
@@ -25,24 +25,22 @@ const postSlice = createSlice ({
       /* Reducers for fetchPosts */
       // Типо слушатели функции fetchPosts
       .addCase(fetchPosts.pending, (state) => {
-        //Start loading
         state.isLoading = true;
         state.error = null;
       })
       .addCase(fetchPosts.fulfilled, (state, action) => {
-        //Success load data
         state.isLoading = false;
         state.posts = action.payload;
         state.error = null;
       })
       .addCase(fetchPosts.rejected, (state, action) => {
-        //Fail load data
         state.isLoading = false;
         state.error = action.payload as string;
-      });
+      })
   },
 });
 
-export default postSlice.reducer;
 //export const {
 //} = postSlice.actions;
+
+export default postSlice.reducer;

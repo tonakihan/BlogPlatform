@@ -3,6 +3,7 @@
 
 .barTop {
   width: 1000px;
+  height: 17px;
   background-color: aqua;
   border-radius: 30px;
   margin: 20px auto;
@@ -24,5 +25,17 @@
   margin-right: 15px;
 }
 
-.auth {
+.authLoggined {
+  display: flex;
+  justify-content: right;
+
+  & button {
+    font-size: 14px;
+    margin-top: -7px;
+    padding: 2px;
+  }
+}
+
+.authUserInfo {
+  margin-right: 10px;
 }
