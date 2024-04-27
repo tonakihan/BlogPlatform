@@ -1,18 +1,18 @@
 import { configureStore } from "@reduxjs/toolkit";
-import postsReducer from "./slices/postsSlice";
 import commentsAPI from "../services/commentsAPI";
 import usersAPI from "../services/usersAPI";
 import authSlice from "./slices/authSlice";
+import postsAPI from "../services/postsAPI";
 
 export const store = configureStore({
   reducer: {
-    posts: postsReducer,
     [commentsAPI.reducerPath]: commentsAPI.reducer,
     [usersAPI.reducerPath]: usersAPI.reducer,
+    [postsAPI.reducerPath]: postsAPI.reducer,
     auth: authSlice,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(commentsAPI.middleware, usersAPI.middleware),
+    getDefaultMiddleware().concat(commentsAPI.middleware, usersAPI.middleware, postsAPI.middleware),
 });
 
 

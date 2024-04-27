@@ -50,6 +50,7 @@ cp build/* ./public # копирование в папку public на backend
     - [ ] Авторизация
   - [x] Поддржка css module для typescript
   - [ ] Footer открепить от окна, и прикрепить к низу страницы
+  - [ ] Добавить margin 100px снизу в posts;
 
 
   ## TODO

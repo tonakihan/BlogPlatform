@@ -18,7 +18,7 @@ const PostList: FC<PostListProps> = ({ posts }) => {
     <div>
       {posts.map(post => (
         <div onClick={() => selectPost(post)} key={post.id}>
-          <PostItem post={post} className={cl.postListElement}/>
+          <PostItem post={post} className={cl.postListElement} type='list'/>
         </div>
       ))}
     </div>

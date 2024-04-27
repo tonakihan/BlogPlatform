@@ -15,7 +15,8 @@ const MyInput: FC<MyInputProps> = ({
   type = 'text',
   name,
   value,
-  onChange
+  onChange,
+  id
 }) => {
   let style = [cl.myInput];
   className && style.push(className);
@@ -28,6 +29,7 @@ const MyInput: FC<MyInputProps> = ({
       name={name}
       value={value}
       onChange={onChange}
+      id={id}
       />
   );
 }

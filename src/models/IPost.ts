@@ -1,7 +1,7 @@
 export interface IPost {
-  id: number,
+  id?: number,
   authorId: number,
-  status: string,
-  likes: number,
+  status: 'visable' | 'hide',
+  likes?: number,
   text: string,
 };
