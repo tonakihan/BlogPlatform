@@ -7,10 +7,6 @@ const commentDataValidate = [
   body('authorId')
     .exists().withMessage("authorId is required")
     .isInt().withMessage("authorId should be number"),
-  
-  body('userObjectId')
-    .exists().withMessage("userObjectId is required")
-    .isInt().withMessage("userObjectId should be number"),
 
   body('text')
     .exists().withMessage("text is required")
