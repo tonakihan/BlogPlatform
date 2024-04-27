@@ -44,7 +44,7 @@ export const authentication = createAsyncThunk<
         return thunkApi.rejectWithValue("Неверные логин или пароль");
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
       return thunkApi.rejectWithValue("Ошибка запроса");
     }
   },

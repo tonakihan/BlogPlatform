@@ -6,7 +6,7 @@ import cl from "../styles/post.module.css"
 import Error from "../components/Error";
 import Loading from "../components/Loading";
 import { useNavigate } from "react-router-dom";
-import { useCreatePostMutation, useGetPostsQuery } from "../services/postsAPI";
+import { useAddPostMutation, useGetPostsQuery } from "../services/postsAPI";
 import type { IPost } from "../models/IPost";
 import ReactModal from "react-modal";
 import type { IUser } from "../models/IUser";
@@ -14,7 +14,7 @@ import type { IUser } from "../models/IUser";
 const Posts: FC = () => {
   //postApi
   const { data: posts, isLoading, error } = useGetPostsQuery();
-  const [addPost] = useCreatePostMutation();
+  const [addPost] = useAddPostMutation();
   //Auth
   const { isAuth, userInfo } = useAppSelector( state => state.auth );
   //Other
@@ -48,17 +48,15 @@ const Posts: FC = () => {
   const handlerSubmit = async ( e: SyntheticEvent<HTMLFormElement> ) => {
     e.preventDefault();
 
-    let post: IPost = {
+    let newPost: IPost = {
       authorId: (userInfo as IUser).id,
-      status: 'visable', // TODO: Изменить если будет админ
+      status: 'visable', // TODO: Изменить если будет модерация
       ...formData
     }
 
     try {
-      await addPost(post).unwrap();
-      setFormData({
-        text: ''
-      });
+      await addPost(newPost).unwrap();
+      setFormData({text: ''});
       closeModal();
     } catch (e) {
       console.error('reject', e);
@@ -82,15 +80,14 @@ const Posts: FC = () => {
             <br/>
             <textarea 
               id="text" 
-              cols="100" 
-              rows="25" 
               value={formData.text} 
               onChange={event => setFormData({...formData, text: event.target.value})}
             ></textarea>
+            <MyButton type="submit"></MyButton>
             {/* TODO: Стелизацию */}
           </div>
           <MyButton onClick={closeModal}>Отмена</MyButton>
-          <MyButton type="submit">Готово!</MyButton>
+          <MyButton type="submit">Показать всему миру!</MyButton>
         </form>
       </ReactModal>
     </div>

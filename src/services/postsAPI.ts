@@ -15,7 +15,7 @@ const postsAPI = createApi({
       providesTags: ['Posts'],
     }),
 
-    createPost: builder.mutation<IPost, IPost>({
+    addPost: builder.mutation<IPost, IPost>({
       query: (post) => ({
         url: '/',
         method: 'POST',
@@ -29,7 +29,7 @@ const postsAPI = createApi({
  
 export const {
   useGetPostsQuery,
-  useCreatePostMutation
+  useAddPostMutation
 } = postsAPI;
 
 export default postsAPI;

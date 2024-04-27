@@ -15,7 +15,7 @@ const CommentItem: FC<CommentItemProps> = ({comment, className}) => {
       <hr/>
       <div className={cl.commentItemContent}>
         <p>Author {comment.authorId}.</p> 
-        <p>{comment.text}.</p> 
+        <p>{comment.text}</p> 
         <p>Likes {comment.likes}</p>
       </div>
     </div>
