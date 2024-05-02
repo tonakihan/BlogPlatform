@@ -7,6 +7,7 @@ interface MyInputProps extends IHtmlElement {
   type?: string;
   value?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>;
+  required: boolean
 }
 
 const MyInput: FC<MyInputProps> = ({ 
@@ -16,7 +17,8 @@ const MyInput: FC<MyInputProps> = ({
   name,
   value,
   onChange,
-  id
+  id,
+  required = false,
 }) => {
   let style = [cl.myInput];
   className && style.push(className);
@@ -29,8 +31,9 @@ const MyInput: FC<MyInputProps> = ({
       name={name}
       value={value}
       onChange={onChange}
-      id={id}
-      />
+      id={id} 
+      required={required}
+    />
   );
 }
 

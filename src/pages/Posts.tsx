@@ -83,7 +83,6 @@ const Posts: FC = () => {
               value={formData.text} 
               onChange={event => setFormData({...formData, text: event.target.value})}
             ></textarea>
-            <MyButton type="submit"></MyButton>
             {/* TODO: Стелизацию */}
           </div>
           <MyButton onClick={closeModal}>Отмена</MyButton>

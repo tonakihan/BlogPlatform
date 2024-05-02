@@ -16,12 +16,12 @@ cp build/* ./public # копирование в папку public на backend
     - [x] About
     - [ ] Search
     - [ ] UserById
-    - [ ] Posts
-      - [ ] Создание своего поста
-    - [ ] PostById
+    - [x] Posts
+      - [x] Создание своего поста
+    - [x] PostById
       - [x] Сделать комменты
-      - [ ] Создания своего коммента
-    - [ ] Auth
+      - [x] Создания своего коммента
+    - [x] Auth
   - [ ] Поиск
     - [ ] Сортировка
     - [ ] Фильтр
@@ -29,31 +29,33 @@ cp build/* ./public # копирование в папку public на backend
     - [ ] По имени пользователя
   - [ ] Настройка redux
     - [ ] Slices/Reducers
-      - [ ] Users
+      - [x] Users
       - [x] Posts
       - [ ] Subscribe
       - [x] Comments
     - [ ] Получение данных с сервера
-      - [ ] Users
+      - [x] Users
       - [x] Posts
       - [ ] Subscribers
       - [x] Comments
     - [ ] Отправление данных на сервер
-      - [ ] User
-      - [ ] Post
+      - [x] User
+      - [x] Post
       - [ ] Subscribe
-      - [ ] Comment
+      - [x] Comment
   - [x] Настройка Router
-  - [ ] Создать NavBar
+  - [x] Создать NavBar
     - [x] Стили
     - [x] Навигация по страницам
-    - [ ] Авторизация
+    - [x] Авторизация
   - [x] Поддржка css module для typescript
   - [ ] Footer открепить от окна, и прикрепить к низу страницы
   - [ ] Добавить margin 100px снизу в posts;
-
 
   ## TODO
   - [ ] Сделать на redux запрос одного пользователя/поста.
   - [ ] Заменить стили на один огромный файл (конфликт стилей)
   - [x] Настроить стили content (ограничить ширину)
+
+  ## Bugs
+  createApi page Posts - при отсутсвии сервера вываливается в ошибку.

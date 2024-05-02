@@ -1,0 +1,23 @@
+.warning {
+  background-color: red;
+  color: white;
+  padding: 30px;
+  border-radius: 20px;
+  margin: 40px auto;
+  font-size: 1.1rem;
+}
+
+.registerMain form {
+  display: grid;
+}
+
+.registerMain label {
+  /*margin-left: 20px;*/
+}
+.registerMain input {
+  width: 350px;
+}
+
+.registerMain form * {
+  margin-bottom: 10px
+}
