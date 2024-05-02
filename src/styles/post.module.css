@@ -43,7 +43,40 @@
   margin-top: 10px;
 }
 
-.form textarea {
+.windowCreatePost {
+  background: #f9f9f9;
+  box-shadow: 10px 10px 10px #e3e3e3;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -350px;
+  margin-left: -550px;
+  width: 1100px;
+  height: 700px;
+  border-radius: 10px;
+}
+
+.windowCreatePost textarea {
+  resize: none;
+  width: 1000px;
+  height: 350px;
+  border-width: 3px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-left: 35px;
+  margin-top: 25px;
+}
+
+.BlockButton {
+  padding-left: 600px;
+}
+
+.windowCreatePost button {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.commentsTextArea {
   resize:vertical;
   width: 974px;
   height: auto;

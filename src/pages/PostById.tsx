@@ -84,6 +84,7 @@ const PostById: FC = () => {
         {isAuth 
         ? <form className={cl.form} onSubmit={handleSubmit}>
             <textarea 
+              className={cl.commentsTextArea}
               value={formData.text}
               onChange={event => setFormData({ ...formData, text: event.target.value })}
               placeholder="Напиши свой комментарий тут"

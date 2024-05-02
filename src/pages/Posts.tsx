@@ -73,20 +73,18 @@ const Posts: FC = () => {
         ? <PostList posts={posts as IPost[]}/>
         : <h2>Будь первым, создай post!</h2>
       }
-      <ReactModal isOpen={modalIsOpen} onRequestClose={closeModal}>
+      <ReactModal isOpen={modalIsOpen} onRequestClose={closeModal} className={cl.windowCreatePost}>
         <form onSubmit={handlerSubmit}>
-          <div>
-            <label htmlFor="text">Содержание поста</label>
-            <br/>
-            <textarea 
-              id="text" 
-              value={formData.text} 
-              onChange={event => setFormData({...formData, text: event.target.value})}
-            ></textarea>
-            {/* TODO: Стелизацию */}
+          <textarea 
+            id="text" 
+            value={formData.text} 
+            onChange={event => setFormData({...formData, text: event.target.value})}
+            placeholder="Готов внимать о твоих подвигах... "
+          ></textarea>
+          <div className={cl.BlockButton}>
+            <MyButton onClick={closeModal}>Отмена</MyButton>
+            <MyButton type="submit">Показать всему миру!</MyButton>
           </div>
-          <MyButton onClick={closeModal}>Отмена</MyButton>
-          <MyButton type="submit">Показать всему миру!</MyButton>
         </form>
       </ReactModal>
     </div>
