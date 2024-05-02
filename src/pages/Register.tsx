@@ -6,7 +6,6 @@ import type { IUser } from "../models/IUser";
 import useHandlerInput from "../hooks/useHandleInput";
 import { useCreateUserMutation } from "../services/usersAPI";
 import { useNavigate } from "react-router-dom";
-import type { useAppSelector } from "../hooks/redux/useAppSelector";
 import { useAppDispatch } from "../hooks/redux/useAppDispatch";
 import { authentication } from "../store/thunk/authThunk";
 
