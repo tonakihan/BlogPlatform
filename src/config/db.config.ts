@@ -2,7 +2,7 @@ import {config as configEnv} from "dotenv";
 configEnv(); // Костыль - для node
 
 export const config = {
-  host: process.env.POSTGRES_HOST ? process.env.POSTGRES_HOST.toString() : 'localhost',
+  host: process.env.DB_HOST ? process.env.DB_HOST.toString() : 'localhost',
   user: process.env.DB_USER ? process.env.DB_USER.toString() : 'postgres',
   password: process.env.DB_PASSWORD?.toString(),
   databaseName: process.env.DB_NAME?.toString(),
