@@ -3,6 +3,7 @@ import Routes from "./routes";
 import Database from "./db";
 import { config as configEnv } from "dotenv";
 import cors, { CorsOptions } from "cors"; //Мб снести в целях безопасности
+import path from "path";
 
 export default class Server {
   constructor(app: Application) {
@@ -21,6 +22,8 @@ export default class Server {
     app.use(cors(corsOptions));
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
+    //TODO: Изменить для разработки и продакшена
+    app.use(express.static(path.join(__dirname, "../public")));
   }
 
   private syncDatabase(): void {
