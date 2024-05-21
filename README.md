@@ -1,24 +1,50 @@
 # BlogPlatform Backend
 Это мой диплом. 
 
-## Запуск 
+## Установка 
+Во первых скачайте репозиторий и переключите ветку.
 ```bash
 git clone https://github.com/tonakihan/BlogPlatform
 cd BlogPlatform
 git checkout backend-node
+```
+
+### БД
+Задайте свой пароль для базы данных
+```bash
+export DB_PASSWORD=replace_with_your_password
+```
+Далее есть 2 варианта поднятия базы данных:
+#### Docker
+```bash
+cd data
+docker build ./ --build-arg "POSTGRES_PASSWORD=$DB_PASSWORD" -t db-blog-platform
+docker run -dp 127.0.0.1:5432:5432 db-blog-platform
+cd ..
+```
+#### Нативный postgres
+```bash
 sudo -u postgres psql -c 'CREATE DATABASE blog_platform;'
-sudo -u postgres psql blog_platform < ./data/Source/db.sql
+sudo -u postgres psql blog_platform < ./data/blog_platform.sql
+```
+
+### Настройка backend приложения
+```bash
 npm install
 echo "DB_NAME=blog_platform" > .env
-echo "DB_PASSWORD=Should_be_your_password_from_postgres" > .env
+echo "DB_PASSWORD=$DB_PASSWORD" > .env
 ```
+
+### Настройка frontend
+Попозже
+
+### Запуск приложения
 ```bash
 npm run start
 ```
-Также был доступен bun, но от него отказался, т.к. есть баг с sequelize-typescript
 
----
-/data/db.sql - это простой пример базы данных с которой будет работа. (будет позже / не актуально!)
+### Nginx
+Попозже
 
 ## Task list
 - [ ] Backend
