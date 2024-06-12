@@ -15,16 +15,21 @@ export default class Server {
   private config(app: Application): void {
     configEnv();
     
-    const corsOptions: CorsOptions = {
-      origin: `http://localhost:${process.env.FRONTEND_PORT}`
-    }
-    
-    app.use(cors(corsOptions));
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
     if (process.env.NODE_ENV === 'production') {
       app.use(express.static(path.join(__dirname, "../../static")));
+    } 
+    else if (process.env.NODE_ENV === 'development') {
+      if (! process.env.FRONTEND_PORT) {
+        console.error("please set env FRONTEND_PORT");
+        process.exit(1);
+      } 
+      const corsOptions: CorsOptions = {
+        origin: `http://localhost:${process.env.FRONTEND_PORT}`
+      }
+      app.use(cors(corsOptions));
     }
   }
 
