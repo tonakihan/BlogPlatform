@@ -8,9 +8,13 @@ class FrontendRouter {
   }
 
   intializeRoutes () {
-    this.router.use("*", ( req: Request, res: Response ) => {
-      res.sendFile("index.html", { root: __dirname + "../../../public" });
-    });
+
+    if (process.env.NODE_ENV === 'production') {
+      //Run frontend&backend on single server
+      this.router.use("*", ( req: Request, res: Response ) => {
+        res.sendFile("index.html", { root: __dirname + "../../../../static" });
+      });
+    }
   }
 }
 

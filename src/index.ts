@@ -2,7 +2,7 @@ import express, { Application } from "express";
 import Routes from "./routes";
 import Database from "./db";
 import { config as configEnv } from "dotenv";
-import cors, { CorsOptions } from "cors"; //Мб снести в целях безопасности
+import cors, { CorsOptions } from "cors"; //TODO: Мб снести в целях безопасности?
 import path from "path";
 
 export default class Server {
@@ -22,12 +22,14 @@ export default class Server {
     app.use(cors(corsOptions));
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
-    //TODO: Изменить для разработки и продакшена
-    app.use(express.static(path.join(__dirname, "../public")));
+
+    if (process.env.NODE_ENV === 'production') {
+      app.use(express.static(path.join(__dirname, "../../static")));
+    }
   }
 
   private syncDatabase(): void {
     const db = new Database();
-    db.sequelize?.sync(); //TODO: Что это 
+    db.sequelize?.sync();
   }
 }

@@ -28,7 +28,7 @@ sudo -u postgres psql -c 'CREATE DATABASE blog_platform;'
 sudo -u postgres psql blog_platform < ./data/blog_platform.sql
 ```
 
-### Настройка backend приложения
+### Настройка backend
 ```bash
 npm install
 echo "DB_NAME=blog_platform" > .env
@@ -36,15 +36,19 @@ echo "DB_PASSWORD=$DB_PASSWORD" > .env
 ```
 
 ### Настройка frontend
-Попозже
+Переключитесь на frontend и соберите его
+```bash
+git checkout frontend
+```
+После вернитесь в эту ветку
+```
+git checkout backend-node
+```
 
 ### Запуск приложения
 ```bash
 npm run start
 ```
-
-### Nginx
-Попозже
 
 ## Task list
 - [ ] Backend

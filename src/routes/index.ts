@@ -11,7 +11,6 @@ class Routes {
     app.use("/api/post", postRouter);
     app.use("/api/subscribe", subscribeRoutes);
     app.use("/api/comment", commentRoutes);
-    //TODO: изменить под продакшн
     app.use("*", frontendRoutes);
   }
 }
