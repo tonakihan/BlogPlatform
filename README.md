@@ -6,7 +6,6 @@
 ```bash
 npm install
 npm run build
-cp build/* ./public # копирование в папку public на backend
 ```
 После запустите backend
 
