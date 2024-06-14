@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - "./data/blog_platform.sql:/docker-entrypoint-initdb.d/blog_platform.sql"
+      - "./data/.postgresData/:/var/lib/postgresql/data/"
+    environment:
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: blog_platform
+  
+  app:
+    build: ./
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+    command: npm run start
+  
+  nginx:
+    image: nginx
+    environment:
+      PORT_APP: 8080
+      HOST_APP: app
+    volumes:
+    - "./nginx/template:/etc/nginx/template:ro"
+    ports:
+      - "8080:80"
+    depends_on:
+      - app

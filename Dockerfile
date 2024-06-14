@@ -17,12 +17,15 @@ RUN git checkout backend-node && \
 
 FROM node:lts-alpine3.19
 ENV DB_PASSWORD=docker \
-    DB_NAME=blog_platform
+    DB_NAME=blog_platform 
 WORKDIR /usr/app
-COPY --from=builder /src/build /src/static /src/package.json /src/.env .
+COPY --from=builder /src/build ./build
+COPY --from=builder /src/static ./static
+COPY --from=builder /src/package.json .
 # TODO: Проверить наличие файла .env перед копированием
+#COPY --from=builder /src/.env .
 RUN npm install --production
 
 EXPOSE 8080
 
-CMD ["yarn", "start"]
+CMD ["npm", "run", "start"]
