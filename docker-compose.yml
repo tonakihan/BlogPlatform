@@ -24,7 +24,7 @@ services:
       PORT_APP: 8080
       HOST_APP: app
     volumes:
-    - "./nginx/template:/etc/nginx/template:ro"
+    - "./nginx/template/:/etc/nginx/templates/:ro"
     ports:
       - "8080:80"
     depends_on:
