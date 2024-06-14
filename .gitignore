@@ -180,3 +180,5 @@ build
 .vscode
 public
 static
+data
+!data/*.sql
