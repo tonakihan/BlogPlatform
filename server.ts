@@ -6,7 +6,7 @@ const server: Server = new Server(app);
 const PORT: number = process.env.BACKEND_PORT ? parseInt(process.env.BACKEND_PORT, 10) : 8080;
 
 app
-  .listen(PORT, "localhost", () => {
+  .listen(PORT, () => {
     console.log(process.env);
     console.log();
     console.log(
@@ -16,8 +16,8 @@ app
   })
   .on("error", (err: any) => {
     if (err.code === "EADDRINUSE") {
-      console.log("Error: address already in use");
+      console.error("Error: address already in use");
     } else {
-      console.log(err);
+      console.error(err);
     }
   });
