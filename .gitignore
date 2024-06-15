@@ -178,5 +178,4 @@ dist
 bun.lockb
 build
 static
-data
-!data/*.sql
+data/.postgresData
