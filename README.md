@@ -39,11 +39,11 @@ npm run build
 ```
 
 #### c. Настройка и сборка frontend
-Переключитесь на frontend и соберите его
+Переключитесь на frontend и соберите его по инструкции с README.md на frontent
 ```bash
 git checkout frontend
 ```
-После вернитесь в эту ветку
+После успешной сборки вернитесь в эту ветку
 ```
 git checkout backend-node
 ```
