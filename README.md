@@ -1,9 +1,9 @@
 # BlogPlatform Backend
 ## Установка
-### Docker compose
+### 1. Docker compose
 Вернитесь в ветку main и следуйте инструкции из README.md
 
-### Ручной способ
+### 2. Ручной способ
 Во первых скачайте репозиторий и переключите ветку.
 ```bash
 git clone https://github.com/tonakihan/BlogPlatform
@@ -11,7 +11,7 @@ cd BlogPlatform
 git checkout backend-node
 ```
 
-#### БД
+#### a. БД
 Задайте свой пароль для базы данных
 ```bash
 export DB_PASSWORD=replace_with_your_password
@@ -30,7 +30,7 @@ sudo -u postgres psql -c 'CREATE DATABASE blog_platform;'
 sudo -u postgres psql blog_platform < ./data/blog_platform.sql
 ```
 
-#### Настройка и сборка backend
+#### b. Настройка и сборка backend
 ```bash
 npm install
 echo "DB_NAME=blog_platform" > .env
@@ -38,7 +38,7 @@ echo "DB_PASSWORD=$DB_PASSWORD" > .env
 npm run build
 ```
 
-#### Настройка и сборка frontend
+#### c. Настройка и сборка frontend
 Переключитесь на frontend и соберите его
 ```bash
 git checkout frontend
@@ -48,7 +48,7 @@ git checkout frontend
 git checkout backend-node
 ```
 
-#### Запуск приложения
+#### d. Запуск приложения
 ```bash
 npm run start
 ```
