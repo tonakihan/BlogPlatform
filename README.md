@@ -1,4 +1,10 @@
 # BlogPlatform
+<div style="display: flex; justify-content: space-between;">
+  <image src="/screenshots/BP_1.png" style="width: 50%" alt="Главная страница">
+  <image src="/screenshots/BP_2.png" style="width: 50%" alt="Создание поста"> 
+</div>
+<image src="/screenshots/BP_3.png" style="width: 100%" alt="Страница поста">
+
 
 Это мой диплом. Разделено на 3 ветки:
   - [frontend](https://github.com/tonakihan/BlogPlatform/tree/frontend) - React приложение отвечающая за отрисовку страницы
